@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class SecondLargestUnique {
+
+    // Function to find the second largest unique number
+    public static int secondLargestUnique(int[] nums) {
+        // Use a Set to store unique numbers
+        Set<Integer> uniqueSet = new HashSet<>();
+        for (int num : nums) {
+            uniqueSet.add(num);
+        }
+
+        // If less than 2 unique numbers, return -1
+        if (uniqueSet.size() < 2) {
+            return -1;
+        }
+
+        // Convert to list and sort in descending order
+        List<Integer> uniqueList = new ArrayList<>(uniqueSet);
+        Collections.sort(uniqueList, Collections.reverseOrder());
+
+        // Return second largest
+        return uniqueList.get(1);
+    }
+
+    // ---------- Sample Test Cases ----------
+    public static void main(String[] args) {
+        int[] nums1 = {3, 5, 2, 5, 6, 6, 1};
+        int[] nums2 = {7, 7, 7};
+        int[] nums3 = {10, 20, 30, 40};
+        int[] nums4 = {1};
+
+        System.out.println(secondLargestUnique(nums1)); // Output: 5
+        System.out.println(secondLargestUnique(nums2)); // Output: -1
+        System.out.println(secondLargestUnique(nums3)); // Output: 30
+        System.out.println(secondLargestUnique(nums4)); // Output: -1
+    }
+}
